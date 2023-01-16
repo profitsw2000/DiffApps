@@ -4,41 +4,42 @@ import android.Manifest
 import android.app.AlertDialog
 import android.content.Context
 import android.content.pm.PackageManager
+import android.location.Location
 import android.location.LocationManager
-import android.os.Build
-import androidx.fragment.app.Fragment
-
+import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
-import androidx.constraintlayout.motion.widget.Debug.getLocation
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.content.getSystemService
+import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import profitsw2000.diffapps.R
+import profitsw2000.diffapps.databinding.FragmentMapsBinding
+import java.util.function.Consumer
 
 class MapsFragment : Fragment() {
 
+    private var _binding: FragmentMapsBinding? = null
+    private val binding get() = _binding!!
     private val REQUEST_CODE = 10
+    private lateinit var map: GoogleMap
     private val callback = OnMapReadyCallback { googleMap ->
-        val saintPetersburg = LatLng(59.9386, 30.3141)
-        googleMap.addMarker(MarkerOptions().position(saintPetersburg).title("Marker in Sydney"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(saintPetersburg))
+        map = googleMap
+        activateMyLocation(map)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_maps, container, false)
+    ): View {
+        _binding = FragmentMapsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,6 +48,11 @@ class MapsFragment : Fragment() {
         mapFragment?.getMapAsync(callback)
 
         checkPermission()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
     private fun checkPermission() {
@@ -157,7 +163,12 @@ class MapsFragment : Fragment() {
                     val provider =
                         locationManager.getProvider(LocationManager.GPS_PROVIDER)
                     provider?.let {
-                        val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+                        if (SDK_INT >= android.os.Build.VERSION_CODES.R) {
+                            locationManager.getCurrentLocation(LocationManager.GPS_PROVIDER,
+                            null,
+                            requireActivity().mainExecutor,
+                            locationCallback)
+                        }
                     }
                 } else {
                     showDialog("GPS выключен", "Для определения вашего местоположения включите GPS")
@@ -168,6 +179,23 @@ class MapsFragment : Fragment() {
         }
     }
 
+    private fun activateMyLocation(googleMap: GoogleMap) {
+        context?.let {
+            val isPermissionGranted =
+                ContextCompat.checkSelfPermission(it,
+                    Manifest.permission.ACCESS_FINE_LOCATION) ==
+                        PackageManager.PERMISSION_GRANTED
+            googleMap.isMyLocationEnabled = isPermissionGranted
+            googleMap.uiSettings.isMyLocationButtonEnabled = isPermissionGranted
+        }
+    }
+
+    private val locationCallback = Consumer<Location> { location ->
+        if (null != location) {
+            val currentLocation = LatLng(location.latitude, location.longitude)
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 10f))
+        }
+    }
 
     companion object {
         fun newInstance() = MapsFragment()
