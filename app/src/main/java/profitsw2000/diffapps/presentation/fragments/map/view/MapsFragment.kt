@@ -18,6 +18,8 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
 import profitsw2000.diffapps.R
 import profitsw2000.diffapps.databinding.FragmentMapsBinding
 import java.util.function.Consumer
@@ -27,10 +29,28 @@ class MapsFragment : Fragment() {
     private var _binding: FragmentMapsBinding? = null
     private val binding get() = _binding!!
     private val REQUEST_CODE = 10
+    private val controller by lazy { activity as Controller }
     private lateinit var map: GoogleMap
+    private val markers: ArrayList<Marker> = arrayListOf()
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
+        map.setOnMapLongClickListener { latLng ->
+            addMarkerToArray(latLng)
+        }
+
         activateMyLocation(map)
+    }
+
+    private fun addMarkerToArray(latLng: LatLng) {
+        map.addMarker(MarkerOptions().position(latLng))?.let { markers.add(it) }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (activity !is Controller) {
+            throw IllegalStateException("Activity должна наследоваться от Controller")
+        }
+
     }
 
     override fun onCreateView(
@@ -48,6 +68,9 @@ class MapsFragment : Fragment() {
         mapFragment?.getMapAsync(callback)
 
         checkPermission()
+        binding.currentLocationFab.setOnClickListener {
+            controller.openMarkerListFragment()
+        }
     }
 
     override fun onDestroy() {
@@ -195,6 +218,10 @@ class MapsFragment : Fragment() {
             val currentLocation = LatLng(location.latitude, location.longitude)
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 10f))
         }
+    }
+
+    interface Controller {
+        fun openMarkerListFragment()
     }
 
     companion object {
