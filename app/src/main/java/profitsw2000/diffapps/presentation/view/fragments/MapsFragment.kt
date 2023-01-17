@@ -1,4 +1,4 @@
-package profitsw2000.diffapps.presentation.fragments.map.view
+package profitsw2000.diffapps.presentation.view.fragments
 
 import android.Manifest
 import android.app.AlertDialog
@@ -18,10 +18,11 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import profitsw2000.diffapps.R
 import profitsw2000.diffapps.databinding.FragmentMapsBinding
+import profitsw2000.diffapps.presentation.viewmodel.MapViewModel
 import java.util.function.Consumer
 
 class MapsFragment : Fragment() {
@@ -31,9 +32,10 @@ class MapsFragment : Fragment() {
     private val REQUEST_CODE = 10
     private val controller by lazy { activity as Controller }
     private lateinit var map: GoogleMap
-    private val markers: ArrayList<Marker> = arrayListOf()
+    private val mapViewModel: MapViewModel by viewModel()
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
+        setMarkersOnMap()
         map.setOnMapLongClickListener { latLng ->
             addMarkerToArray(latLng)
         }
@@ -41,16 +43,11 @@ class MapsFragment : Fragment() {
         activateMyLocation(map)
     }
 
-    private fun addMarkerToArray(latLng: LatLng) {
-        map.addMarker(MarkerOptions().position(latLng))?.let { markers.add(it) }
-    }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (activity !is Controller) {
             throw IllegalStateException("Activity должна наследоваться от Controller")
         }
-
     }
 
     override fun onCreateView(
@@ -73,9 +70,30 @@ class MapsFragment : Fragment() {
         }
     }
 
+    private fun setMarkersOnMap() {
+        mapViewModel.getMarkerList().observe(viewLifecycleOwner) {
+            if (it != null && it.isNotEmpty()) {
+                map.clear()
+                for (marker in it) {
+                    map.addMarker(MarkerOptions()
+                        .position(marker.position)
+                        .title(marker.title)
+                    )
+                }
+            }
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun addMarkerToArray(latLng: LatLng) {
+        map.addMarker(MarkerOptions().position(latLng))?.let {
+            mapViewModel.addMarker(it)
+            //markers.add(it)
+        }
     }
 
     private fun checkPermission() {
