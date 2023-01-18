@@ -8,12 +8,12 @@ import com.google.android.gms.maps.model.Marker
 import profitsw2000.diffapps.databinding.MarkerListItemViewBinding
 import java.text.DecimalFormat
 
-class MarkerListAdapter : RecyclerView.Adapter<MarkerListAdapter.ViewHolder>() {
+class MarkerListAdapter(val onItemClickListener: OnItemClickListener) : RecyclerView.Adapter<MarkerListAdapter.ViewHolder>() {
 
-    private var data: List<Marker> = arrayListOf()
+    private var data: ArrayList<Marker> = arrayListOf()
     private lateinit var binding: MarkerListItemViewBinding
 
-    fun setData(data: List<Marker>) {
+    fun setData(data: ArrayList<Marker>) {
         this.data = data
         notifyDataSetChanged()
     }
@@ -28,7 +28,7 @@ class MarkerListAdapter : RecyclerView.Adapter<MarkerListAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(data[position])
+        holder.bind(data[position], position)
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -40,13 +40,22 @@ class MarkerListAdapter : RecyclerView.Adapter<MarkerListAdapter.ViewHolder>() {
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(marker: Marker) {
+        fun bind(marker: Marker, position: Int) {
             with(binding) {
                 val df = DecimalFormat("##.####")
                 val lat = marker.position.latitude
                 val lon = marker.position.longitude
-                markerTitleTextView.text = marker.title
-                markerCoordinatesTextView.text = "Координаты: ${df.format(lat)} ${df.format(lon)}"
+                markerNameTextView.text = marker.title
+                markerLatitudeTextView.text = "${df.format(lat)}"
+                markerLongitudeTextView.text = "${df.format(lon)}"
+
+                deleteMarkerTextView.setOnClickListener {
+                    onItemClickListener.onDeleteClick(position)
+                }
+
+                editMarkerTextView.setOnClickListener {
+                    onItemClickListener.onEditClick(position)
+                }
             }
         }
     }

@@ -1,5 +1,20 @@
 <resources>
     <string name="app_name">DiffApps</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="geo_access_dialog_title_text">Доступ к геолокации</string>
+    <string name="geo_access_dialog_text">Для определения вашего местоположения необходимо разрешить доступ к геолокации.</string>
+    <string name="geo_access_dialog_positive_button_text">Предоставить доступ</string>
+    <string name="geo_access_dialog_negative_button_text">Отклонить</string>
+    <string name="geo_access_denied_warning_title_text">Доступ к геолокации закрыт</string>
+    <string name="geo_access_denied_warning_text">Разрешите доступ к геолокации, если хотите определять свое местоположение.</string>
+    <string name="close_dialog_button_text">Закрыть</string>
+    <string name="gps_off_dialog_title_text">GPS выключен</string>
+    <string name="gps_off_dialog_text">Для определения вашего местоположения включите GPS</string>
+    <string name="marker_name_title_text">Название:</string>
+    <string name="marker_coordinates_title_text">Координаты</string>
+    <string name="marker_latitude_title_text">Широта:</string>
+    <string name="marker_longitude_title_text">Долгота:</string>
+    <string name="delete_marker_text"><p><u>Удалить</u></p></string>
+    <string name="edit_marker_text"><p><u>Редактировать</u></p></string>
+    <string name="marker_title_edit_text">Введите новое название маркера:</string>
 </resources>

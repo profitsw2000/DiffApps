@@ -8,9 +8,7 @@ import android.location.Location
 import android.location.LocationManager
 import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -50,6 +48,11 @@ class MapsFragment : Fragment() {
         }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -65,15 +68,31 @@ class MapsFragment : Fragment() {
         mapFragment?.getMapAsync(callback)
 
         checkPermission()
-        binding.currentLocationFab.setOnClickListener {
-            controller.openMarkerListFragment()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_map_fragment,menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.marker_list -> {
+                controller.openMarkerListFragment()
+            }
         }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun setMarkersOnMap() {
         mapViewModel.getMarkerList().observe(viewLifecycleOwner) {
+            map.clear()
             if (it != null && it.isNotEmpty()) {
-                map.clear()
                 for (marker in it) {
                     map.addMarker(MarkerOptions()
                         .position(marker.position)
@@ -84,15 +103,9 @@ class MapsFragment : Fragment() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
     private fun addMarkerToArray(latLng: LatLng) {
         map.addMarker(MarkerOptions().position(latLng))?.let {
             mapViewModel.addMarker(it)
-            //markers.add(it)
         }
     }
 
@@ -127,13 +140,13 @@ class MapsFragment : Fragment() {
     private fun showRationaleDialog() {
         requireActivity().let {
             AlertDialog.Builder(it)
-                .setTitle("Доступ к геолокации")
-                .setMessage("Для определения вашего местоположения необходимо разрешить доступ к геолокации.")
-                .setPositiveButton("Предоставить доступ")
+                .setTitle(getString(R.string.geo_access_dialog_title_text))
+                .setMessage(getString(R.string.geo_access_dialog_text))
+                .setPositiveButton(getString(R.string.geo_access_dialog_positive_button_text))
                 { _, _ ->
                     requestPermission()
                 }
-                .setNegativeButton("Отклонить") {
+                .setNegativeButton(getString(R.string.geo_access_dialog_negative_button_text)) {
                         dialog, _ -> dialog.dismiss() }
                 .create()
                 .show()
@@ -162,14 +175,14 @@ class MapsFragment : Fragment() {
                         getLocation()
                     } else {
                         showDialog(
-                            "Доступ к геолокации закрыт",
-                            "Разрешите доступ к геолокации, если хотите определять свое местоположение."
+                            getString(R.string.geo_access_denied_warning_title_text),
+                            getString(R.string.geo_access_denied_warning_text)
                         )
                     }
                 } else {
                     showDialog(
-                        "Доступ к геолокации закрыт",
-                        "Разрешите доступ к геолокации, если хотите определять свое местоположение."
+                        getString(R.string.geo_access_denied_warning_title_text),
+                        getString(R.string.geo_access_denied_warning_text)
                     )
                 }
                 return
@@ -182,7 +195,7 @@ class MapsFragment : Fragment() {
             AlertDialog.Builder(it)
                 .setTitle(title)
                 .setMessage(message)
-                .setNegativeButton("Закрыть") { dialog, _ -> dialog.dismiss() }
+                .setNegativeButton(getString(R.string.close_dialog_button_text)) { dialog, _ -> dialog.dismiss() }
                 .create()
                 .show()
         }
@@ -212,7 +225,7 @@ class MapsFragment : Fragment() {
                         }
                     }
                 } else {
-                    showDialog("GPS выключен", "Для определения вашего местоположения включите GPS")
+                    showDialog(getString(R.string.gps_off_dialog_title_text), getString(R.string.gps_off_dialog_text))
                 }
             } else {
                 showRationaleDialog()

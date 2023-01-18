@@ -20,4 +20,20 @@ class MapViewModel : ViewModel() {
     fun getMarkerList() : LiveData<ArrayList<Marker>> {
         return markerLiveData
     }
+
+    fun deleteMarker(position: Int) {
+        val markerList = getMarkerList().value
+        markerList?.let {
+            it.removeAt(position)
+        }
+        markerLiveData.value = markerList
+    }
+
+    fun editMarkerTitle(position: Int, title: String) {
+        val markerList = getMarkerList().value
+        markerList?.let {
+            it[position].title = title
+        }
+        markerLiveData.value = markerList
+    }
 }
