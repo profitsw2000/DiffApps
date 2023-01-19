@@ -17,4 +17,5 @@
     <string name="delete_marker_text"><p><u>Удалить</u></p></string>
     <string name="edit_marker_text"><p><u>Редактировать</u></p></string>
     <string name="marker_title_edit_text">Введите новое название маркера:</string>
+    <string name="edit_dialog_positive_button_text">OK</string>
 </resources>

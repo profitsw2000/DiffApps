@@ -7,14 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.Toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import profitsw2000.diffapps.R
 import profitsw2000.diffapps.databinding.FragmentMarkerListBinding
 import profitsw2000.diffapps.presentation.view.adapters.MarkerListAdapter
 import profitsw2000.diffapps.presentation.view.adapters.OnItemClickListener
 import profitsw2000.diffapps.presentation.viewmodel.MapViewModel
-import java.text.FieldPosition
 
 
 class MarkerListFragment : Fragment() {
@@ -43,7 +41,7 @@ class MarkerListFragment : Fragment() {
         requireActivity().let {
             AlertDialog.Builder(it)
                 .setTitle(getString(R.string.edit_marker_text))
-                .setPositiveButton("OK")  { _, _ ->
+                .setPositiveButton(getString(R.string.edit_dialog_positive_button_text))  { _, _ ->
                     mapViewModel.editMarkerTitle(position,
                         view.findViewById<EditText>(R.id.new_marker_title_edit_text).text.toString())
                 }
@@ -66,8 +64,8 @@ class MarkerListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         mapViewModel.getMarkerList().observe(viewLifecycleOwner) {
             adapter?.setData(it)
+            binding.markerListRecyclerView.adapter = adapter
         }
-        binding.markerListRecyclerView.adapter = adapter
     }
 
     companion object {
