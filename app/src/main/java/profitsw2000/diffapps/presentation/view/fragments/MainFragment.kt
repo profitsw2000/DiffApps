@@ -4,11 +4,13 @@ import Docs
 import TopFilms
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import profitsw2000.diffapps.R
@@ -23,8 +25,10 @@ class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
+    private var isNotLastPage = true
     private val mainViewModel: MainViewModel by viewModel()
-    private lateinit var docsList: ArrayList<Docs>
+    private var docsList: ArrayList<Docs> = arrayListOf()
+
     private val adapter by lazy {
         FilmListAdapter(object : OnItemClickListener {
             override fun onItemClick(id: Int) {
@@ -49,6 +53,14 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.filmListRecyclerView.adapter = adapter
+        binding.filmListRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (!binding.filmListRecyclerView.canScrollVertically(1) && isNotLastPage) {
+                    mainViewModel.getTopFilmsList()
+                }
+            }
+        })
 
         val observer = Observer<AppState> {renderData(it)}
         mainViewModel.stateLiveData.observe(viewLifecycleOwner, observer)
@@ -66,7 +78,14 @@ class MainFragment : Fragment() {
 
     private fun updateViews(topFilms: TopFilms) {
         binding.progressBar.hide()
-        adapter.setData(topFilms.docs as ArrayList<Docs>)
+        docsList.addAll(topFilms.docs)
+        adapter.setData(docsList)
+        with(topFilms) {
+            isNotLastPage.equals(this.page < this.pages)
+/*            Log.d("VVV", this.page.toString())
+            Log.d("VVV", this.pages.toString())
+            Log.d("VVV", isNotLastPage.toString())*/
+        }
     }
 
     private fun handleError(message: String) {

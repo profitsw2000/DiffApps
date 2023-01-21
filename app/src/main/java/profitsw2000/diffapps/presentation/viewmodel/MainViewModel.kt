@@ -20,7 +20,7 @@ class MainViewModel (
     fun getTopFilmsList() {
         _stateLiveData.value = AppState.Loading
         repository.getTopFilmsList()
-            .delaySubscription(5, TimeUnit.SECONDS)
+            .delaySubscription(2, TimeUnit.SECONDS)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
