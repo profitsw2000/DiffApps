@@ -5,11 +5,11 @@ import io.reactivex.rxjava3.core.Single
 import profitsw2000.diffapps.domain.Repository
 
 class RepositoryImpl : Repository {
-    override fun getTopFilmsList(): Single<List<TopFilmsDTO>> {
+    override fun getTopFilmsList(): Single<TopFilmsDTO> {
         TODO("Not yet implemented")
     }
 
-    override fun getTopFilmsList(page: Int): Single<List<TopFilmsDTO>> {
+    override fun getTopFilmsList(page: Int): Single<TopFilmsDTO> {
         TODO("Not yet implemented")
     }
 }
