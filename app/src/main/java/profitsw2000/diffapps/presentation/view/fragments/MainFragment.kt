@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import profitsw2000.diffapps.R
 import profitsw2000.diffapps.databinding.FragmentMainBinding
+import profitsw2000.diffapps.presentation.view.adapters.FilmListAdapter
+import profitsw2000.diffapps.presentation.view.adapters.OnItemClickListener
 import profitsw2000.diffapps.presentation.viewmodel.MainViewModel
 
 class MainFragment : Fragment() {
@@ -15,6 +17,17 @@ class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
+    private val adapter by lazy {
+        FilmListAdapter(object : OnItemClickListener {
+            override fun onItemClick(id: Int) {
+/*                val bundle = Bundle().apply {
+                    id?.let { putInt(INFO_EXTRA, it) }
+                    putString(SOCKET_EXTRA, socket.id.toString())
+                }
+                fullStationInfoViewModel.navigateToSocketInfoScreen(bundle)*/
+            }
+        })
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

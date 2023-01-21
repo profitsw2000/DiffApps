@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import profitsw2000.diffapps.R
 import profitsw2000.diffapps.databinding.FilmListItemViewBinding
 
-class FilmListAdapter : RecyclerView.Adapter<FilmListAdapter.ViewHolder>() {
+class FilmListAdapter (val onItemClickListener: OnItemClickListener) : RecyclerView.Adapter<FilmListAdapter.ViewHolder>() {
 
     private var data: ArrayList<Docs> = arrayListOf()
     private lateinit var binding: FilmListItemViewBinding
@@ -42,6 +42,9 @@ class FilmListAdapter : RecyclerView.Adapter<FilmListAdapter.ViewHolder>() {
                 filmTitleTextView.text = docs.name
                 filmYearTextView.text = docs.year.toString()
                 filmRatingTextView.text = docs.rating.kp.toString()
+                filmPosterImageView.setOnClickListener {
+                    onItemClickListener.onItemClick(docs.id)
+                }
             }
         }
     }
