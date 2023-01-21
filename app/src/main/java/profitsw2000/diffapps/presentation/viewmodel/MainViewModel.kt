@@ -1,5 +1,8 @@
 package profitsw2000.diffapps.presentation.viewmodel
 
-class MainViewModel () : BaseViewModel() {
-    // TODO: Implement the ViewModel
+import profitsw2000.diffapps.domain.Repository
+
+class MainViewModel (private val repository: Repository) : BaseViewModel() {
+
+
 }
