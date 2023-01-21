@@ -7,6 +7,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import profitsw2000.diffapps.domain.Repository
 import profitsw2000.diffapps.mappers.TopFilmsMapper
 import profitsw2000.diffapps.model.AppState
+import java.util.concurrent.TimeUnit
 
 class MainViewModel (
     private val repository: Repository,
@@ -19,6 +20,7 @@ class MainViewModel (
     fun getTopFilmsList() {
         _stateLiveData.value = AppState.Loading
         repository.getTopFilmsList()
+            .delaySubscription(5, TimeUnit.SECONDS)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
