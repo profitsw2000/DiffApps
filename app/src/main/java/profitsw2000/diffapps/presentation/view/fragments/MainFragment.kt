@@ -62,9 +62,11 @@ class MainFragment : Fragment() {
             }
         })
 
-        val observer = Observer<AppState> {renderData(it)}
-        mainViewModel.stateLiveData.observe(viewLifecycleOwner, observer)
-        mainViewModel.getTopFilmsList()
+        if (savedInstanceState == null) {
+            val observer = Observer<AppState> {renderData(it)}
+            mainViewModel.stateLiveData.observe(viewLifecycleOwner, observer)
+            mainViewModel.getTopFilmsList()
+        }
     }
 
     private fun renderData(appState: AppState) {

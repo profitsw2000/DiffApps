@@ -7,7 +7,6 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import profitsw2000.diffapps.domain.Repository
 import profitsw2000.diffapps.entity.filmdetails.FilmDetails
 import profitsw2000.diffapps.mappers.FilmDetailsMapper
-import profitsw2000.diffapps.model.AppState
 
 class DetailsViewModel(
     private val repository: Repository,

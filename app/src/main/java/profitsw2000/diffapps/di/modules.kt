@@ -8,10 +8,8 @@ import profitsw2000.diffapps.data.local.FakeRepositoryImpl
 import profitsw2000.diffapps.data.web.KinoPoiskApi
 import profitsw2000.diffapps.data.web.RepositoryImpl
 import profitsw2000.diffapps.domain.Repository
-import profitsw2000.diffapps.mappers.DocsMapper
-import profitsw2000.diffapps.mappers.PosterMapper
-import profitsw2000.diffapps.mappers.RatingMapper
-import profitsw2000.diffapps.mappers.TopFilmsMapper
+import profitsw2000.diffapps.mappers.*
+import profitsw2000.diffapps.presentation.viewmodel.DetailsViewModel
 import profitsw2000.diffapps.presentation.viewmodel.MainViewModel
 import retrofit2.Converter
 import retrofit2.Retrofit
@@ -38,7 +36,12 @@ val appModule = module {
 
     single<Repository>(named(NAME_LOCAL)) { FakeRepositoryImpl() }
     single { MainViewModel(get(named(NAME_REMOTE)), get()) }
+    single { DetailsViewModel(get(named(NAME_REMOTE)), get()) }
+
     factory<Converter.Factory> { GsonConverterFactory.create() }
+    factory { PersonMapper() }
+    factory { GenreMapper() }
+    factory { FilmDetailsMapper(get(), get(), get(), get()) }
     factory { PosterMapper() }
     factory { RatingMapper() }
     factory { DocsMapper(get(), get()) }
