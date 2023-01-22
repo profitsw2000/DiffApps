@@ -2,6 +2,7 @@ package profitsw2000.diffapps.model.filmdetails
 
 
 import com.google.gson.annotations.SerializedName
+import profitsw2000.diffapps.model.topfilms.*
 
 data class FilmDetailsDTO(
     @SerializedName("ageRating")
