@@ -1,20 +1,20 @@
 package profitsw2000.diffapps.data.local
 
-import DocsDTO
-import ExternalIdDTO
-import LogoDTO
-import NamesDTO
-import PosterDTO
-import RatingDTO
-import ReleaseYearsDTO
-import TopFilmsDTO
-import VotesDTO
-import WatchabilityDTO
+import profitsw2000.diffapps.model.topfilms.DocsDTO
+import profitsw2000.diffapps.model.topfilms.ExternalIdDTO
+import profitsw2000.diffapps.model.topfilms.LogoDTO
+import profitsw2000.diffapps.model.topfilms.NamesDTO
+import profitsw2000.diffapps.model.topfilms.PosterDTO
+import profitsw2000.diffapps.model.topfilms.RatingDTO
+import profitsw2000.diffapps.model.topfilms.ReleaseYearsDTO
+import profitsw2000.diffapps.model.topfilms.TopFilmsDTO
+import profitsw2000.diffapps.model.topfilms.VotesDTO
+import profitsw2000.diffapps.model.topfilms.WatchabilityDTO
 
-val watchabilityDTO = WatchabilityDTO("","")
-val votesDTO = VotesDTO(0, 0, 0, 0, 0, "")
+val watchabilityDTO = WatchabilityDTO("")
+val votesDTO = VotesDTO(0, 0, 0, 0, 0.0, "")
 val releaseYearsDTO = ReleaseYearsDTO(0, 0, "")
-val ratingDTO = RatingDTO(kp = 7.7, 0.0, 0, 0, 0, "")
+val ratingDTO = RatingDTO(kp = 7.7, 0.0, 0, 0.0, 0.0, "")
 val posterDTO = PosterDTO("", "", "")
 val namesDTO = NamesDTO("", "")
 val logoDTO = LogoDTO("", "")

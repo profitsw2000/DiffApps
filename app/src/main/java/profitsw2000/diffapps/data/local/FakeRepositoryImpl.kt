@@ -1,7 +1,6 @@
 package profitsw2000.diffapps.data.local
 
-import TopFilmsDTO
-import io.reactivex.rxjava3.core.Completable
+import profitsw2000.diffapps.model.topfilms.TopFilmsDTO
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.core.Single.just
 import profitsw2000.diffapps.domain.Repository

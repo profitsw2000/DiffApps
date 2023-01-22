@@ -1,7 +1,7 @@
 package profitsw2000.diffapps.mappers
 
-import TopFilms
-import TopFilmsDTO
+import profitsw2000.diffapps.entity.topfilms.TopFilms
+import profitsw2000.diffapps.model.topfilms.TopFilmsDTO
 
 class TopFilmsMapper (private val docsMapper: DocsMapper){
     fun map(topFilmsDTO: TopFilmsDTO): TopFilms {

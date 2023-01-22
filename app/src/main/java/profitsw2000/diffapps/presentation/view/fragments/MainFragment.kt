@@ -1,10 +1,8 @@
 package profitsw2000.diffapps.presentation.view.fragments
 
-import Docs
-import TopFilms
-import androidx.lifecycle.ViewModelProvider
+import profitsw2000.diffapps.entity.topfilms.Docs
+import profitsw2000.diffapps.entity.topfilms.TopFilms
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +11,6 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import profitsw2000.diffapps.R
 import profitsw2000.diffapps.databinding.FragmentMainBinding
 import profitsw2000.diffapps.model.AppState
 import profitsw2000.diffapps.presentation.view.adapters.FilmListAdapter
@@ -26,11 +23,11 @@ class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
     private var isNotLastPage = true
+    private var page = 1
     private val mainViewModel: MainViewModel by viewModel()
     private var docsList: ArrayList<Docs> = arrayListOf()
 
-    private val adapter by lazy {
-        FilmListAdapter(object : OnItemClickListener {
+    private var adapter = FilmListAdapter(docsList, object : OnItemClickListener {
             override fun onItemClick(id: Int) {
 /*                val bundle = Bundle().apply {
                     id?.let { putInt(INFO_EXTRA, it) }
@@ -39,7 +36,6 @@ class MainFragment : Fragment() {
                 fullStationInfoViewModel.navigateToSocketInfoScreen(bundle)*/
             }
         })
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,7 +53,7 @@ class MainFragment : Fragment() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 if (!binding.filmListRecyclerView.canScrollVertically(1) && isNotLastPage) {
-                    mainViewModel.getTopFilmsList()
+                    mainViewModel.getTopFilmsList(page)
                 }
             }
         })
@@ -79,12 +75,10 @@ class MainFragment : Fragment() {
     private fun updateViews(topFilms: TopFilms) {
         binding.progressBar.hide()
         docsList.addAll(topFilms.docs)
-        adapter.setData(docsList)
+        adapter.notifyDataSetChanged()
         with(topFilms) {
-            isNotLastPage.equals(this.page < this.pages)
-/*            Log.d("VVV", this.page.toString())
-            Log.d("VVV", this.pages.toString())
-            Log.d("VVV", isNotLastPage.toString())*/
+            isNotLastPage = (this.page < this.pages)
+            this@MainFragment.page = this.page + 1
         }
     }
 
@@ -92,7 +86,7 @@ class MainFragment : Fragment() {
         binding.mainConstraintLayout.showSnackBar(
             message,
         "Reload",
-            {mainViewModel.getTopFilmsList()},
+            {mainViewModel.getTopFilmsList(page)},
             Snackbar.LENGTH_INDEFINITE
         )
         binding.progressBar.hide()

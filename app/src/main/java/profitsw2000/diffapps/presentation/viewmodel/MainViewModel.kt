@@ -20,7 +20,23 @@ class MainViewModel (
     fun getTopFilmsList() {
         _stateLiveData.value = AppState.Loading
         repository.getTopFilmsList()
-            .delaySubscription(2, TimeUnit.SECONDS)
+            //.delaySubscription(2, TimeUnit.SECONDS)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    _stateLiveData.value = AppState.Success(topFilmsMapper.map(it))
+                },
+                {
+                    _stateLiveData.value = AppState.Error(it.message.toString())
+                }
+            )
+    }
+
+    fun getTopFilmsList(page: Int) {
+        _stateLiveData.value = AppState.Loading
+        repository.getTopFilmsList(page)
+            //.delaySubscription(2, TimeUnit.SECONDS)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(

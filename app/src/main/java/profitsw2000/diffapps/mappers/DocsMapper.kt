@@ -1,7 +1,7 @@
 package profitsw2000.diffapps.mappers
 
-import Docs
-import DocsDTO
+import profitsw2000.diffapps.entity.topfilms.Docs
+import profitsw2000.diffapps.model.topfilms.DocsDTO
 
 class DocsMapper (private val posterMapper: PosterMapper,
                   private val ratingMapper: RatingMapper) {

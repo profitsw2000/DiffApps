@@ -1,7 +1,7 @@
 package profitsw2000.diffapps.mappers
 
-import PosterDTO
-import profitsw2000.diffapps.entity.Poster
+import profitsw2000.diffapps.model.topfilms.PosterDTO
+import profitsw2000.diffapps.entity.topfilms.Poster
 
 class PosterMapper {
     fun map(posterDTO: PosterDTO): Poster {
