@@ -17,7 +17,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:textSize="24sp"
+        android:textSize="@dimen/film_title_text_size"
         tools:text="Film" />
 
     <LinearLayout
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/large_layout_margin_interval"
         app:layout_constraintTop_toBottomOf="@+id/film_title_text_view"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent">
@@ -47,35 +47,35 @@
 
             <TextView
                 android:id="@+id/release_year_text_view"
-                android:layout_marginLeft="12dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="@dimen/medium_layout_margin_interval"
+                android:layout_marginBottom="@dimen/small_layout_margin_interval"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Год: 2022"/>
+                android:text="@string/release_year_text"/>
 
             <TextView
                 android:id="@+id/duration_text_view"
-                android:layout_marginLeft="12dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="@dimen/medium_layout_margin_interval"
+                android:layout_marginBottom="@dimen/small_layout_margin_interval"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Длительность:"/>
+                android:text="@string/film_duration_text"/>
 
             <TextView
                 android:id="@+id/genres_text_view"
-                android:layout_marginLeft="12dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="@dimen/medium_layout_margin_interval"
+                android:layout_marginBottom="@dimen/small_layout_margin_interval"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Жанр: "/>
+                android:text="@string/film_genres_text"/>
 
             <TextView
                 android:id="@+id/rating_text_view"
-                android:layout_marginLeft="12dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="@dimen/medium_layout_margin_interval"
+                android:layout_marginBottom="@dimen/small_layout_margin_interval"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Рейтинг: "/>
+                android:text="@string/film_rating_text"/>
 
         </LinearLayout>
 
@@ -87,11 +87,11 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/film_info_linear_layout"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/large_layout_margin_interval"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:textSize="18sp"
-        android:text="Описание" />
+        android:textSize="@dimen/subtitle_text_size"
+        android:text="@string/film_description_title_text" />
 
     <TextView
         android:id="@+id/description_text_view"
@@ -99,7 +99,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/description_title_text_view"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="@dimen/medium_layout_margin_interval"
         tools:text="ОписаниеОписаниеОписаниеОписаниеОписаниеОписаниеОписаниеОписаниеОписание" />
 
     <TextView
@@ -108,11 +108,11 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/description_text_view"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/large_layout_margin_interval"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:textSize="18sp"
-        tools:text="Актёры" />
+        android:textSize="@dimen/subtitle_text_size"
+        tools:text="@string/film_actors_title_text" />
 
     <TextView
         android:id="@+id/actors_list_text_view"
@@ -120,7 +120,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/actors_title_text_view"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="@dimen/medium_layout_margin_interval"
         tools:text="Актёр 1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
