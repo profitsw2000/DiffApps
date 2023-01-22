@@ -1,5 +1,6 @@
 package profitsw2000.diffapps.presentation.view.fragments
 
+import android.content.Context
 import profitsw2000.diffapps.entity.topfilms.Docs
 import profitsw2000.diffapps.entity.topfilms.TopFilms
 import android.os.Bundle
@@ -19,23 +20,26 @@ import profitsw2000.diffapps.presentation.viewmodel.MainViewModel
 
 class MainFragment : Fragment() {
 
-
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
     private var isNotLastPage = true
     private var page = 1
     private val mainViewModel: MainViewModel by viewModel()
     private var docsList: ArrayList<Docs> = arrayListOf()
+    private val controller by lazy { activity as Controller }
 
     private var adapter = FilmListAdapter(docsList, object : OnItemClickListener {
             override fun onItemClick(id: Int) {
-/*                val bundle = Bundle().apply {
-                    id?.let { putInt(INFO_EXTRA, it) }
-                    putString(SOCKET_EXTRA, socket.id.toString())
-                }
-                fullStationInfoViewModel.navigateToSocketInfoScreen(bundle)*/
+                controller.openDetailsFragment(id)
             }
-        })
+    })
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (activity !is Controller) {
+            throw IllegalStateException("Activity должна наследоваться от Controller")
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -120,7 +124,7 @@ class MainFragment : Fragment() {
     }
 
     interface Controller {
-        fun openDetailsFragment(filmId: String)
+        fun openDetailsFragment(id: Int)
     }
 
     companion object {

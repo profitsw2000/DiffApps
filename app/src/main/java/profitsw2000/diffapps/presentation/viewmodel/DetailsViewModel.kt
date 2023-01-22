@@ -1,4 +1,4 @@
-package profitsw2000.diffapps.presentation.view.fragments
+package profitsw2000.diffapps.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 
