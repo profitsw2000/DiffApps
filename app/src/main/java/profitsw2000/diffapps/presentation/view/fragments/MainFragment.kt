@@ -4,6 +4,7 @@ import android.content.Context
 import profitsw2000.diffapps.entity.topfilms.Docs
 import profitsw2000.diffapps.entity.topfilms.TopFilms
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +24,7 @@ class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
     private var isNotLastPage = true
+    private var load = false
     private var page = 1
     private val mainViewModel: MainViewModel by viewModel()
     private var docsList: ArrayList<Docs> = arrayListOf()
@@ -38,6 +40,13 @@ class MainFragment : Fragment() {
         super.onAttach(context)
         if (activity !is Controller) {
             throw IllegalStateException("Activity должна наследоваться от Controller")
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (savedInstanceState == null) {
+            load = true
         }
     }
 
@@ -57,14 +66,15 @@ class MainFragment : Fragment() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 if (!binding.filmListRecyclerView.canScrollVertically(1) && isNotLastPage) {
+                    load = true
                     mainViewModel.getTopFilmsList(page)
                 }
             }
         })
 
-        if (savedInstanceState == null) {
-            val observer = Observer<AppState> {renderData(it)}
-            mainViewModel.stateLiveData.observe(viewLifecycleOwner, observer)
+        val observer = Observer<AppState> {renderData(it)}
+        mainViewModel.stateLiveData.observe(viewLifecycleOwner, observer)
+        if (load) {
             mainViewModel.getTopFilmsList()
         }
     }
@@ -80,11 +90,15 @@ class MainFragment : Fragment() {
 
     private fun updateViews(topFilms: TopFilms) {
         binding.progressBar.hide()
-        docsList.addAll(topFilms.docs)
-        adapter.notifyDataSetChanged()
-        with(topFilms) {
-            isNotLastPage = (this.page < this.pages)
-            this@MainFragment.page = this.page + 1
+        if (load) {
+            load = false
+            docsList.addAll(topFilms.docs)
+            Log.d("VVV", docsList.size.toString())
+            adapter.notifyDataSetChanged()
+            with(topFilms) {
+                isNotLastPage = (this.page < this.pages)
+                this@MainFragment.page = this.page + 1
+            }
         }
     }
 
