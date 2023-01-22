@@ -3,6 +3,7 @@ package profitsw2000.diffapps.data.web
 import profitsw2000.diffapps.model.topfilms.TopFilmsDTO
 import io.reactivex.rxjava3.core.Single
 import profitsw2000.diffapps.entity.filmdetails.FilmDetails
+import profitsw2000.diffapps.model.filmdetails.FilmDetailsDTO
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -18,5 +19,5 @@ interface KinoPoiskApi {
     @GET("movie?field=id")
     fun getFilmDetailsById(
         @Query("search") filmId: Int,
-        @Query("token") token: String): Single<FilmDetails>
+        @Query("token") token: String): Single<FilmDetailsDTO>
 }
