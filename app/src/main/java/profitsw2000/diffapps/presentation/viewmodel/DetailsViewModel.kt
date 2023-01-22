@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import profitsw2000.diffapps.domain.Repository
+import profitsw2000.diffapps.entity.filmdetails.FilmDetails
 import profitsw2000.diffapps.mappers.FilmDetailsMapper
-import profitsw2000.diffapps.mappers.TopFilmsMapper
 import profitsw2000.diffapps.model.AppState
 
 class DetailsViewModel(
@@ -14,22 +14,23 @@ class DetailsViewModel(
     private val filmDetailsMapper: FilmDetailsMapper
 ) : BaseViewModel() {
 
-    private val _stateLiveData = MutableLiveData<AppState>()
-    val stateLiveData: LiveData<AppState> by this::_stateLiveData
+    private val _stateLiveData = MutableLiveData<FilmDetails>()
+    val stateLiveData: LiveData<FilmDetails> by this::_stateLiveData
+
+    private val _errorLiveData = MutableLiveData<String>()
+    val errorLiveData: LiveData<String> by this::_errorLiveData
 
     fun getFilmDetails(filmId: Int) {
-        _stateLiveData.value = AppState.Loading
-/*        repository.getTopFilmsList()
-            //.delaySubscription(2, TimeUnit.SECONDS)
+        repository.getFilmDetailsById(filmId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
-                    _stateLiveData.value = AppState.Success(topFilmsMapper.map(it))
+                    _stateLiveData.value = filmDetailsMapper.map(it)
                 },
                 {
-                    _stateLiveData.value = AppState.Error(it.message.toString())
+                    _errorLiveData.value = it.message.toString()
                 }
-            )*/
+            )
     }
 }
