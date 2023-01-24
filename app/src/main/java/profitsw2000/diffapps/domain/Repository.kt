@@ -1,5 +1,7 @@
 package profitsw2000.diffapps.domain
 
-interface Repository {
+import profitsw2000.diffapps.data.CarDriver
 
+interface Repository {
+    val carDriver: CarDriver
 }
