@@ -11,10 +11,10 @@ class MainViewModel (private val repository: Repository) : ViewModel() {
     val carCoordinatesLiveData: LiveData<Coordinates> = repository.carDriver.coordinateSource.asLiveData()
 
     fun startCar() {
-        repository.carDriver.startJob()
+        repository.carDriver.startCar()
     }
 
-    fun stopCar() {
-        repository.carDriver.stopJob()
+    fun setPathAmplitudeAndLength(pathAmplitude: Int, pathLength: Int) {
+        repository.carDriver.setPathAmplitudeAndLength(pathAmplitude, pathLength)
     }
 }
