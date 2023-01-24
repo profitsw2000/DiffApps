@@ -14,7 +14,7 @@ class MainViewModel (private val repository: Repository) : ViewModel() {
         repository.carDriver.startJob()
     }
 
-    fun stopJob() {
+    fun stopCar() {
         repository.carDriver.stopJob()
     }
 }
