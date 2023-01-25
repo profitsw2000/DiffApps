@@ -4,4 +4,6 @@
     <string name="classes_menu_item_text">Classes</string>
     <string name="notes_menu_item_text">Notes</string>
     <string name="favorite_menu_item_text">Favorite</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home_fragment">
+
+    <fragment
+        android:id="@+id/home_fragment"
+        android:name="profitsw2000.diffapps.HomeFragment"
+        android:label="@string/home_menu_item_text"
+        tools:layout="@layout/fragment_home">
+    </fragment>
+
+    <fragment
+        android:id="@+id/classes_fragment"
+        android:name="profitsw2000.diffapps.ClassesFragment"
+        android:label="@string/classes_menu_item_text"
+        tools:layout="@layout/fragment_classes">
+    </fragment>
+
+    <fragment
+        android:id="@+id/note_fragment"
+        android:name="profitsw2000.diffapps.NoteFragment"
+        android:label="@string/notes_menu_item_text"
+        tools:layout="@layout/fragment_note">
+    </fragment>
+
+    <fragment
+        android:id="@+id/favorite_fragment"
+        android:name="profitsw2000.diffapps.FavoriteFragment"
+        android:label="@string/favorite_menu_item_text"
+        tools:layout="@layout/fragment_favorite">
+    </fragment>
 
 </navigation>
