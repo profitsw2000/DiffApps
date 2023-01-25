@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DiffApps</string>
+    <string name="home_menu_item_text">Home</string>
+    <string name="classes_menu_item_text">Classes</string>
+    <string name="notes_menu_item_text">Notes</string>
+    <string name="favorite_menu_item_text">Favorite</string>
 </resources>
