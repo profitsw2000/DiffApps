@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.layout.fragment_home, R.layout.fragment_classes, R.layout.fragment_note, R.layout.fragment_favorite)
+            setOf(R.id.home_fragment, R.id.classes_fragment, R.id.note_fragment, R.id.favorite_fragment)
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
