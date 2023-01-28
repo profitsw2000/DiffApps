@@ -6,4 +6,9 @@
     <string name="favorite_menu_item_text">Favorite</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="count_down_timer_card_title_text">Are you ready for exams?</string>
+    <string name="time_divider_text">:</string>
+    <string name="days_string_text">Days</string>
+    <string name="hours_string_text">Hours</string>
+    <string name="minutes_string_text">Minutes</string>
 </resources>

@@ -15,5 +15,7 @@
         <!-- Background color. -->
         <item name="android:colorBackground">@color/bckg</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:ambientShadowAlpha">0.75</item>
+        <item name="android:spotShadowAlpha">0.75</item>
     </style>
 </resources>
