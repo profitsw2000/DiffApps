@@ -8,5 +8,5 @@ data class Lesson(
     val endMinute: Int,
     val teacher: String,
     val description: String,
-    val online: Boolean
+    val isOnline: Boolean
 )

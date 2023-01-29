@@ -5,9 +5,11 @@
     android:id="@+id/classes_recycler_view_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginRight="12dp"
     android:background="@drawable/classes_recyclerview_item_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/skype_link_constraint_layout"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -17,7 +19,7 @@
         android:paddingBottom="12dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
-        android:background="@color/blue_100">
+        android:background="@drawable/open_in_layout_background">
 
         <profitsw2000.diffapps.customview.VerticalTextView
             android:id="@+id/open_skype_text_view"

@@ -36,14 +36,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/exam_count_down_timer_digit_text_style"
-            tools:text="0"/>
+            android:text="0"/>
 
         <TextView
             android:id="@+id/days_digit_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/exam_count_down_timer_digit_text_style"
-            tools:text="9"/>
+            android:text="9"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -58,14 +58,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/exam_count_down_timer_digit_text_style"
-            tools:text="2"/>
+            android:text="2"/>
 
         <TextView
             android:id="@+id/hours_digit_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/exam_count_down_timer_digit_text_style"
-            tools:text="3"/>
+            android:text="3"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -80,14 +80,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/exam_count_down_timer_digit_text_style"
-            tools:text="5"/>
+            android:text="5"/>
 
         <TextView
             android:id="@+id/minutes_digit_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/exam_count_down_timer_digit_text_style"
-            tools:text="9"/>
+            android:text="9"/>
 
     </LinearLayout>
 
@@ -108,7 +108,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:textSize="18sp"
+            android:textSize="@dimen/time_dimensions_text_size"
             android:layout_weight="1"
             android:text="@string/days_string_text"/>
 
@@ -125,7 +125,7 @@
             android:id="@+id/minutes_text_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="@dimen/time_dimensions_text_size"
             android:gravity="center_horizontal"
             android:layout_weight="1"
             android:text="@string/minutes_string_text"/>

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="count_down_timer_main_layout_side_padding">8dp</dimen>
-    <dimen name="count_down_timer_card_title_text_size">24sp</dimen>
+    <dimen name="count_down_timer_card_title_text_size">20sp</dimen>
     <dimen name="count_down_timer_main_layout_tb_padding">24dp</dimen>
     <dimen name="digit_layout_top_margin">18dp</dimen>
     <dimen name="time_divider_text_size">32sp</dimen>
     <dimen name="time_dimen_layout_top_margin">8dp</dimen>
     <dimen name="time_dimen_layout_side_margin">32dp</dimen>
-    <dimen name="time_dimensions_text_size">18sp</dimen>
+    <dimen name="time_dimensions_text_size">15sp</dimen>
     <dimen name="countdown_timer_card_corner_radius">32dp</dimen>
     <dimen name="card_elevation_size">12dp</dimen>
     <dimen name="countdown_timer_card_margin_left">6dp</dimen>
+    <dimen name="classes_rv_item_corner_radius">32dp</dimen>
+    <dimen name="lesson_info_layouts_interval">12dp</dimen>
 </resources>

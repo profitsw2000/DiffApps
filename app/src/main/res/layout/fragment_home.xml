@@ -27,57 +27,66 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-    <TextView
-        android:id="@+id/classes_recycler_view_title_text_view"
-        style="@style/main_layouts_title_style"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lesson_homework_info_constraint_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
         app:layout_constraintTop_toBottomOf="@id/count_down_timer_card_view"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:text="Classes"/>
-
-    <TextView
-        android:id="@+id/number_of_classes_today_title_text_view"
-        style="@style/main_layouts_sub_title_style"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="24dp"
-        app:layout_constraintBottom_toBottomOf="@id/classes_recycler_view_title_text_view"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="6 classes today"/>
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/classes_list_recycler_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/classes_recycler_view_title_text_view"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
-        android:orientation="horizontal"/>
+        <TextView
+            android:id="@+id/classes_recycler_view_title_text_view"
+            style="@style/main_layouts_title_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="Classes"/>
 
-    <TextView
-        android:id="@+id/homework_recycler_view_title_text_view"
-        style="@style/main_layouts_title_style"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@id/classes_list_recycler_view"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:text="Homework"/>
+        <TextView
+            android:id="@+id/number_of_classes_today_title_text_view"
+            style="@style/main_layouts_sub_title_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/classes_recycler_view_title_text_view"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="6 classes today"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/homework_list_recycler_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/homework_recycler_view_title_text_view"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
-        android:orientation="horizontal"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/classes_list_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/classes_recycler_view_title_text_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_marginTop="@dimen/lesson_info_layouts_interval"
+            android:orientation="horizontal"/>
+
+        <TextView
+            android:id="@+id/homework_recycler_view_title_text_view"
+            style="@style/main_layouts_title_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/lesson_info_layouts_interval"
+            app:layout_constraintTop_toBottomOf="@id/classes_list_recycler_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="Homework"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/homework_list_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/homework_recycler_view_title_text_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_marginTop="@dimen/lesson_info_layouts_interval"
+            android:orientation="horizontal"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
