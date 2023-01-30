@@ -33,7 +33,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activity?.actionBar?.setTitle("sdsa")
         binding.classesListRecyclerView.adapter = classesAdapter
         binding.homeworkListRecyclerView.adapter = homeworkAdapter
     }
