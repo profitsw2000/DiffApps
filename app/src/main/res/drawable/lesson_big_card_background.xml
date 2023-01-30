@@ -7,6 +7,7 @@
                android:startColor="@color/teal_A200"
                android:endColor="@color/teal_A700"
                android:type="linear"/>
+           <corners android:radius="@dimen/classes_rv_item_corner_radius"/>
        </shape>
    </item>
 </selector>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/classes_recycler_view_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/lesson_big_card_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/classes_recycler_view_item_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/classes_big_image_background_style"
+            android:padding="16dp"
+            android:src="@drawable/bow_and_arrow"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/discipline_name_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/big_card_title_style"
+            app:layout_constraintLeft_toRightOf="@+id/classes_recycler_view_item_image_view"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/teacher_text_view"
+            android:textColor="@color/white"
+            android:layout_marginLeft="24dp"
+            android:text="History"/>
+
+        <TextView
+            android:id="@+id/teacher_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/big_card_sub_title_style"
+            app:layout_constraintLeft_toRightOf="@+id/classes_recycler_view_item_image_view"
+            app:layout_constraintTop_toBottomOf="@id/discipline_name_text_view"
+            app:layout_constraintBottom_toBottomOf="@id/classes_recycler_view_item_image_view"
+            android:layout_marginLeft="24dp"
+            android:text="Teacher: Mr Ebott"/>
+
+        <TextView
+            android:id="@+id/lesson_description_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/classes_info_text_style"
+            android:layout_marginTop="24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/classes_recycler_view_item_image_view"
+            android:text="Intensive preparation for The Boxing Championship of the world in Las Vegas, Nevada"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/lesson_description_text_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:src="@drawable/boxer_icon"
+            android:layout_marginTop="24dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

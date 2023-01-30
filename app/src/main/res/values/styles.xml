@@ -29,6 +29,17 @@
         <item name="android:textColor">@color/grey_300</item>
     </style>
 
+    <style name="big_card_title_style">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/green_100</item>
+    </style>
+
+    <style name="big_card_sub_title_style">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/green_100</item>
+    </style>
+
     <style name="classes_info_text_style">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/grey_50</item>
