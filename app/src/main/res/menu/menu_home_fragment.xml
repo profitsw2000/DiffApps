@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/search_icon"
+        android:title="Search"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/adjust"
+        android:icon="@drawable/adjust_icon"
+        android:title="Adjust"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/student"
+        android:icon="@drawable/man_student_icon"
+        android:title="Student"
+        app:showAsAction="always" />
+</menu>

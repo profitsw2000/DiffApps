@@ -3,7 +3,8 @@
     <item>
         <shape>
             <solid android:color="@color/blue_grey_700"/>
-            <corners android:radius="@dimen/classes_rv_item_corner_radius"/>
+            <corners android:topRightRadius="@dimen/classes_rv_item_corner_radius"
+                android:topLeftRadius="@dimen/classes_rv_item_corner_radius"/>
         </shape>
     </item>
 </selector>

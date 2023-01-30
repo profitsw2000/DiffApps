@@ -26,6 +26,12 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:itemIconSize="32dp"
+        app:labelVisibilityMode="unlabeled"
+        android:paddingTop="18dp"
+        android:paddingBottom="18dp"
+        app:elevation="0dp"
+        android:background="@drawable/navigation_bar_background"
         app:menu="@menu/bottom_nav_menu"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

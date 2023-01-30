@@ -3,21 +3,21 @@
 
     <item
         android:id="@+id/home_fragment"
-        android:icon="@drawable/ic_baseline_star_border_24"
-        android:title="@string/home_menu_item_text"/>
+        android:icon="@drawable/home_icon_40"
+        android:title="Home"/>
 
     <item
         android:id="@+id/classes_fragment"
-        android:icon="@drawable/ic_baseline_star_border_24"
+        android:icon="@drawable/classes_icon_40"
         android:title="@string/classes_menu_item_text"/>
 
     <item
         android:id="@+id/note_fragment"
-        android:icon="@drawable/ic_baseline_star_border_24"
+        android:icon="@drawable/notes_icon_40"
         android:title="@string/notes_menu_item_text"/>
 
     <item
         android:id="@+id/favorite_fragment"
-        android:icon="@drawable/ic_baseline_star_border_24"
+        android:icon="@drawable/star_icon_40"
         android:title="@string/favorite_menu_item_text"/>
 </menu>

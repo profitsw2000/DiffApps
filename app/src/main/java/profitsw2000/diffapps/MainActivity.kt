@@ -1,5 +1,6 @@
 package profitsw2000.diffapps
 
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
@@ -34,9 +35,7 @@ class MainActivity : AppCompatActivity() {
             setOf(R.id.home_fragment, R.id.classes_fragment, R.id.note_fragment, R.id.favorite_fragment)
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
+        supportActionBar?.elevation = 0f
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(1842465))
     }
-
-/*    override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp()
-    }*/
 }

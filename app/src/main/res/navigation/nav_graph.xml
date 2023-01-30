@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/home_fragment"
         android:name="profitsw2000.diffapps.HomeFragment"
-        android:label="@string/home_menu_item_text"
+        android:label="@string/home_action_bar_text"
         tools:layout="@layout/fragment_home">
     </fragment>
 
