@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import profitsw2000.diffapps.OnItemClickListener
 import profitsw2000.diffapps.R
 import profitsw2000.diffapps.databinding.ClassesBigRecyclerviewBigItemBinding
 import profitsw2000.diffapps.databinding.ClassesBigRecyclerviewItemBinding
@@ -16,7 +17,8 @@ private const val TYPE_NORMAL = 2
 private const val TYPE_SKYPE = 3
 
 class ClassesBigAdapter (
-    val data: List<Lesson>
+    private val data: List<Lesson>,
+    private val onItemClickListener: OnItemClickListener
 ) : RecyclerView.Adapter<ClassesBigAdapter.BaseViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
@@ -86,6 +88,9 @@ class ClassesBigAdapter (
                 lessonCardLayout.classesRecyclerViewItemImageView.setImageResource(resId)
                 lessonCardLayout.disciplineNameTextView.text = lesson.name
                 lessonCardLayout.teacherTextView.text = lesson.teacher
+                lessonCardLayout.skypeLinkConstraintLayout.setOnClickListener {
+                    onItemClickListener.onItemClick()
+                }
             }
         }
     }

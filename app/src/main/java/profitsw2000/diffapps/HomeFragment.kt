@@ -1,17 +1,17 @@
 package profitsw2000.diffapps
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
-import com.google.android.material.datepicker.MaterialDatePicker.Builder.datePicker
 import profitsw2000.diffapps.adapters.ClassesAdapter
 import profitsw2000.diffapps.adapters.HomeworkAdapter
 import profitsw2000.diffapps.data.lessonList
 import profitsw2000.diffapps.data.taskList
 import profitsw2000.diffapps.databinding.FragmentHomeBinding
+import profitsw2000.diffapps.model.Lesson
 import profitsw2000.diffapps.utils.RemainingTimeCalculator
-import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
 
 
 class HomeFragment : Fragment() {
@@ -37,6 +37,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.classesListRecyclerView.adapter = classesAdapter
+        binding.classesListRecyclerView.smoothScrollToPosition(getCurrentLessonNumber(lessonList))
         binding.homeworkListRecyclerView.adapter = homeworkAdapter
         setTimeBeforeExam()
     }
@@ -45,21 +46,6 @@ class HomeFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_home_fragment,menu)
     }
-/*    private fun getScheduleForWeekDay() : List<Lesson> {
-        val calendar: Calendar = Calendar.getInstance()
-        val day: Int = calendar.get(Calendar.DAY_OF_WEEK)
-
-        return when (day) {
-            Calendar.SUNDAY ->
-            Calendar.MONDAY -> {}
-            Calendar.TUESDAY -> {}
-            Calendar.WEDNESDAY -> {}
-            Calendar.THURSDAY -> {}
-            Calendar.FRIDAY -> {}
-            Calendar.SATURDAY -> {}
-            else ->
-        }
-    }*/
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -77,6 +63,34 @@ class HomeFragment : Fragment() {
         binding.countDownTimerLayout.hoursDigitTextView.text = timeBeforeExam[3]
         binding.countDownTimerLayout.minutesDecDigitTextView.text = timeBeforeExam[4]
         binding.countDownTimerLayout.minutesDigitTextView.text = timeBeforeExam[5]
+    }
+
+    private fun getCurrentLessonNumber(lessonList: List<Lesson>): Int {
+        var currentLessonNumber = 0
+        val calendar = Calendar.getInstance()
+
+        val currentHour = calendar.get(Calendar.HOUR_OF_DAY)
+        val currentMinute = calendar.get(Calendar.MINUTE)
+        val currentTimeInMinutes = getDayTimeInMinutes(currentHour, currentMinute)
+
+        Log.d("VVV", currentHour.toString())
+        Log.d("VVV", currentMinute.toString())
+        Log.d("VVV", currentTimeInMinutes.toString())
+
+        for ((index, lesson) in lessonList.withIndex()) {
+            val lessonBeginInMinutes = getDayTimeInMinutes(lesson.startHour, lesson.startMinute)
+            val lessonEndInMinutes = getDayTimeInMinutes(lesson.endHour, lesson.endMinute)
+
+            if (currentTimeInMinutes in (lessonBeginInMinutes + 1) until lessonEndInMinutes) {
+                currentLessonNumber = index
+            }
+        }
+        Log.d("VVV", currentLessonNumber.toString())
+        return currentLessonNumber
+    }
+
+    private fun getDayTimeInMinutes(hour: Int, minute: Int) : Int {
+        return  hour*60 + minute
     }
 
     companion object {

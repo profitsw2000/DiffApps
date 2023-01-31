@@ -14,7 +14,7 @@
     </style>
 
     <style name="verticalTextStyle">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="main_layouts_title_style">

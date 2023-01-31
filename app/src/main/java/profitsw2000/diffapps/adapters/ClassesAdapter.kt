@@ -51,6 +51,7 @@ class ClassesAdapter (
                 disciplineNameTextView.text = lesson.name
                 lesonTimeTextView.text = lessonTime
                 classesRecyclerViewItemImageView.setImageResource(resId)
+                if (!lesson.isOnline) skypeLinkConstraintLayout.visibility = View.GONE
             }
         }
     }

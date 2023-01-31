@@ -10,4 +10,8 @@
     <string name="days_string_text">Days</string>
     <string name="hours_string_text">Hours</string>
     <string name="minutes_string_text">Minutes</string>
+    <string name="skype_not_installed_text">%1$s is not installed!</string>
+    <string name="skype_not_enabled_text">%1$s is not enabled!</string>
+    <string name="skype_app_name">Skype</string>
+    <string name="skype_package_name">com.skype.raider</string>
 </resources>
