@@ -36,10 +36,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.classesListRecyclerView.adapter = classesAdapter
-        binding.classesListRecyclerView.smoothScrollToPosition(getCurrentLessonNumber(lessonList))
-        binding.homeworkListRecyclerView.adapter = homeworkAdapter
-        setTimeBeforeExam()
+        initView()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -52,10 +49,21 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
+    private fun initView() {
+        with(binding) {
+            classesListRecyclerView.adapter = classesAdapter
+            classesListRecyclerView.smoothScrollToPosition(getCurrentLessonNumber(lessonList))
+            homeworkListRecyclerView.adapter = homeworkAdapter
+            numberOfClassesTodayTitleTextView.text =
+                getString(R.string.number_of_classes_today_text, lessonList.size.toString())
+        }
+        setTimeBeforeExam()
+    }
+
     private fun setTimeBeforeExam() {
         val remainingTimeCalculator = RemainingTimeCalculator()
         val timeBeforeExam = remainingTimeCalculator
-            .getTimeBeforeExamStringList("2023-02-10 11-00","yyyy-MM-dd HH-mm")
+            .getTimeBeforeExamStringList(getString(R.string.exam_date_string),getString(R.string.exam_date_format))
 
         binding.countDownTimerLayout.daysDecDigitTextView.text = timeBeforeExam[0]
         binding.countDownTimerLayout.daysDigitTextView.text = timeBeforeExam[1]
@@ -73,19 +81,16 @@ class HomeFragment : Fragment() {
         val currentMinute = calendar.get(Calendar.MINUTE)
         val currentTimeInMinutes = getDayTimeInMinutes(currentHour, currentMinute)
 
-        Log.d("VVV", currentHour.toString())
-        Log.d("VVV", currentMinute.toString())
-        Log.d("VVV", currentTimeInMinutes.toString())
-
         for ((index, lesson) in lessonList.withIndex()) {
-            val lessonBeginInMinutes = getDayTimeInMinutes(lesson.startHour, lesson.startMinute)
             val lessonEndInMinutes = getDayTimeInMinutes(lesson.endHour, lesson.endMinute)
+            val previousLessonEndIMinutes = if (index > 0)
+                getDayTimeInMinutes(lessonList[index - 1].endHour, lessonList[index - 1].endMinute)
+                else 0
 
-            if (currentTimeInMinutes in (lessonBeginInMinutes + 1) until lessonEndInMinutes) {
+            if (currentTimeInMinutes in (previousLessonEndIMinutes + 1) until lessonEndInMinutes) {
                 currentLessonNumber = index
             }
         }
-        Log.d("VVV", currentLessonNumber.toString())
         return currentLessonNumber
     }
 

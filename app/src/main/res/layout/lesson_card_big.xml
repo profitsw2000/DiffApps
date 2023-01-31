@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="24dp"
+        android:padding="@dimen/lesson_card_internal_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/classes_big_image_background_style"
-            android:padding="16dp"
+            android:padding="@dimen/lesson_card_image_padding"
             android:src="@drawable/bow_and_arrow"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -35,8 +35,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/teacher_text_view"
             android:textColor="@color/white"
-            android:layout_marginLeft="24dp"
-            android:text="History"/>
+            android:layout_marginLeft="@dimen/lesson_card_discipline_text_left_margin"
+            tools:text="History"/>
 
         <TextView
             android:id="@+id/teacher_text_view"
@@ -46,15 +46,15 @@
             app:layout_constraintLeft_toRightOf="@+id/classes_recycler_view_item_image_view"
             app:layout_constraintTop_toBottomOf="@id/discipline_name_text_view"
             app:layout_constraintBottom_toBottomOf="@id/classes_recycler_view_item_image_view"
-            android:layout_marginLeft="24dp"
-            android:text="Teacher: Mr Ebott"/>
+            android:layout_marginLeft="@dimen/lesson_card_discipline_text_left_margin"
+            tools:text="Teacher: Mr Ebott"/>
 
         <TextView
             android:id="@+id/lesson_description_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/big_card_sub_title_style"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="@dimen/lesson_card_description_top_margin"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/classes_recycler_view_item_image_view"
@@ -66,7 +66,7 @@
             app:layout_constraintTop_toBottomOf="@id/lesson_description_text_view"
             app:layout_constraintLeft_toLeftOf="parent"
             android:src="@drawable/boxer_icon"
-            android:layout_marginTop="24dp"/>
+            android:layout_marginTop="@dimen/bottom_icon_top_margin"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

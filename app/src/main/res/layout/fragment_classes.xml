@@ -5,8 +5,8 @@
     android:id="@+id/classes_fragment_constraint_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="24dp"
-    android:paddingRight="24dp"
+    android:paddingLeft="@dimen/fragment_layout_standart_padding"
+    android:paddingRight="@dimen/fragment_layout_standart_padding"
     tools:context=".ClassesFragment">
 
     <TextView
@@ -22,7 +22,7 @@
         android:id="@+id/classes_fragment_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="48dp"
+        android:paddingTop="@dimen/classes_rv_top_padding"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/current_date_text_view"
         app:layout_constraintRight_toRightOf="parent"

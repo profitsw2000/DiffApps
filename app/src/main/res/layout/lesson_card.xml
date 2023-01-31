@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="18dp"
+        android:padding="@dimen/lesson_card_internal_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/classes_image_background_style"
-            android:padding="24dp"
+            android:padding="@dimen/lesson_card_image_padding"
             android:src="@drawable/bow_and_arrow"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -35,8 +35,8 @@
             app:layout_constraintLeft_toRightOf="@+id/classes_recycler_view_item_image_view"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/teacher_text_view"
-            android:layout_marginLeft="24dp"
-            android:text="History"/>
+            android:layout_marginLeft="@dimen/lesson_card_discipline_text_left_margin"
+            tools:text="History"/>
 
         <TextView
             android:id="@+id/teacher_text_view"
@@ -46,8 +46,8 @@
             app:layout_constraintLeft_toRightOf="@+id/classes_recycler_view_item_image_view"
             app:layout_constraintTop_toBottomOf="@id/discipline_name_text_view"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginLeft="24dp"
-            android:text="Teacher: Mr Ebott"/>
+            android:layout_marginLeft="@dimen/lesson_card_discipline_text_left_margin"
+            tools:text="Teacher: Mr Ebott"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import profitsw2000.diffapps.R
 import profitsw2000.diffapps.databinding.HomeworkRecyclerviewItemBinding
 import profitsw2000.diffapps.model.Homework
+import profitsw2000.diffapps.model.Lesson
 
 class HomeworkAdapter (
     val data: List<Homework>
@@ -40,21 +41,13 @@ class HomeworkAdapter (
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         @SuppressLint("ResourceAsColor")
         fun bind(homework: Homework) {
-            val remainTime = "${homework.daysLeft} days left"
-            val resId = when(homework.disciplineName) {
-                "History" -> R.drawable.bow_and_arrow
-                "Literature" -> R.drawable.literature_icon
-                "Physics" -> R.drawable.physics_icon
-                "English" -> R.drawable.english_icon
-                "Mathematics" -> R.drawable.math_icon
-                "Physical education" -> R.drawable.physical_education_icon
-                else -> R.drawable.bow_and_arrow
-            }
+            val remainTime = itemView.context.getString(R.string.homework_days_left_text, homework.daysLeft.toString())
+            val resId = getImageResourceId(homework.disciplineName)
             with(binding) {
                 disciplineNameTextView.text = homework.disciplineName
-                lesonTimeTextView.text = remainTime
+                lessonTimeTextView.text = remainTime
                 if (homework.daysLeft < 3){
-                    lesonTimeTextView.setTextColor(Color.RED)
+                    lessonTimeTextView.setTextColor(Color.RED)
                     lessonTimeImageView.setImageResource(R.drawable.clock_icon_red)
                 } else {
                     lessonTimeImageView.setImageResource(R.drawable.clock_icon)
@@ -65,4 +58,16 @@ class HomeworkAdapter (
         }
     }
 
+    private fun getImageResourceId(lesson: String): Int {
+        val resId = when (lesson) {
+            "History" -> R.drawable.bow_and_arrow
+            "Literature" -> R.drawable.literature_icon
+            "Physics" -> R.drawable.physics_icon
+            "English" -> R.drawable.english_icon
+            "Mathematics" -> R.drawable.math_icon
+            "Physical education" -> R.drawable.physical_education_icon
+            else -> R.drawable.bow_and_arrow
+        }
+        return resId
+    }
 }

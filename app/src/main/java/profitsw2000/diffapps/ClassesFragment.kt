@@ -85,7 +85,7 @@ class ClassesFragment : Fragment() {
     private fun getCurrentDateString(): String {
         val sdf = SimpleDateFormat("d MMM")
         val currentDate = sdf.format(Date())
-        return "Today, $currentDate"
+        return context?.getString(R.string.todays_date_text, currentDate.toString()) ?: ""
     }
 
     companion object {

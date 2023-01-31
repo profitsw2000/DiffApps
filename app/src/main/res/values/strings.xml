@@ -14,4 +14,10 @@
     <string name="skype_not_enabled_text">%1$s is not enabled!</string>
     <string name="skype_app_name">Skype</string>
     <string name="skype_package_name">com.skype.raider</string>
+    <string name="exam_date_string">2023-02-10 11-00</string>
+    <string name="exam_date_format">yyyy-MM-dd HH-mm</string>
+    <string name="number_of_classes_today_text">%1$s classes today</string>
+    <string name="homework_days_left_text">%1$s days left</string>
+    <string name="todays_date_text">Today %1$s</string>
+    <string name="open_in_skype_text">Open in</string>
 </resources>

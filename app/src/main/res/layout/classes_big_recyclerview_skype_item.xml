@@ -8,7 +8,7 @@
 
     <View
         android:id="@+id/view1"
-        android:layout_width="2dp"
+        android:layout_width="@dimen/classes_fragment_vertical_line_width"
         android:layout_height="0dp"
         android:background="@color/blue_grey_700"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -19,7 +19,7 @@
 
     <View
         android:id="@+id/view2"
-        android:layout_width="2dp"
+        android:layout_width="@dimen/classes_fragment_vertical_line_width"
         android:layout_height="0dp"
         android:background="@color/blue_grey_700"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -31,7 +31,7 @@
         android:id="@+id/dot_image_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="@dimen/classes_big_rv_item_circle_top_margin"
         android:src="@drawable/circle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -44,18 +44,18 @@
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@id/dot_image_view"
         app:layout_constraintBottom_toBottomOf="@id/dot_image_view"
-        android:text="8.00 - 9.00"
+        tools:text="8.00 - 9.00"
         style="@style/main_layouts_title_style"
-        android:layout_marginLeft="18dp"/>
+        android:layout_marginLeft="@dimen/classes_big_rv_item_time_text_left_margin"/>
 
     <include
         android:id="@+id/lesson_card_layout"
         layout="@layout/lesson_card_skype"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="@dimen/classes_big_rv_item_card_margin"
+        android:layout_marginLeft="@dimen/classes_big_rv_item_card_margin"
+        android:layout_marginBottom="@dimen/classes_big_rv_item_card_margin"
         app:layout_constraintTop_toBottomOf="@id/lesson_time_text_view"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/guideline"/>
@@ -65,13 +65,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="36dp" />
+        app:layout_constraintGuide_begin="@dimen/classes_big_rv_item_guide_begin" />
 
     <View
         android:id="@+id/bottom_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/classes_big_rv_item_bottom_view_top_margin"
         android:background="@color/blue_grey_700"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

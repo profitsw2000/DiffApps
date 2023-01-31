@@ -5,8 +5,8 @@
     android:id="@+id/classes_recycler_view_item"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginRight="12dp"
-    android:padding="24dp"
+    android:layout_marginRight="@dimen/homework_rv_space_between_items"
+    android:padding="@dimen/homework_rv_item_padding"
     android:background="@drawable/classes_recyclerview_item_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,8 +28,8 @@
                 style="@style/main_layouts_title_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Literature"
-                android:layout_marginBottom="18dp"
+                tools:text="Literature"
+                android:layout_marginBottom="@dimen/homework_rv_item_lesson_name_bottom_margin"
                 app:layout_constraintBottom_toTopOf="@id/lesson_time_image_view"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -44,12 +44,12 @@
                 app:layout_constraintTop_toBottomOf="@id/discipline_name_text_view" />
 
             <TextView
-                android:id="@+id/leson_time_text_view"
+                android:id="@+id/lesson_time_text_view"
                 style="@style/main_layouts_sub_title_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="2 days left"
+                android:layout_marginLeft="@dimen/homework_rv_item_remain_time_text_left_margin"
+                tools:text="2 days left"
                 app:layout_constraintBottom_toBottomOf="@id/lesson_time_image_view"
                 app:layout_constraintLeft_toRightOf="@+id/lesson_time_image_view" />
 
@@ -60,8 +60,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/classes_image_background_style"
-            android:padding="12dp"
-            android:layout_marginLeft="32dp"
+            android:padding="@dimen/homework_rv_lesson_image_padding"
+            android:layout_marginLeft="@dimen/homework_rv_item_lesson_icon_left_margin"
             android:src="@drawable/bow_and_arrow"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/discipline_info_constraint_layout"
@@ -75,11 +75,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         style="@style/classes_info_text_style"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/homework_text_top_margin"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="@id/discipline_info_header_constraint_layout"
         app:layout_constraintTop_toBottomOf="@id/discipline_info_header_constraint_layout"
-        android:text="Read scenes 1.1-1.12 of The Master and Margarita."/>
+        tools:text="Read scenes 1.1-1.12 of The Master and Margarita."/>
         
     <ImageView
         android:layout_width="wrap_content"
@@ -87,6 +87,6 @@
         app:layout_constraintTop_toBottomOf="@id/lesson_homework_text_view"
         app:layout_constraintLeft_toLeftOf="parent"
         android:src="@drawable/bottom_icon"
-        android:layout_marginTop="24dp"/>
+        android:layout_marginTop="@dimen/bottom_icon_top_margin"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

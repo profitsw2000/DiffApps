@@ -5,7 +5,7 @@
     android:id="@+id/classes_recycler_view_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginRight="24dp"
+    android:layout_marginRight="@dimen/classes_rv_space_between_items"
     android:background="@drawable/classes_recyclerview_item_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,19 +13,17 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:background="@drawable/open_in_layout_background"
-        android:padding="18dp"
+        android:padding="@dimen/classes_rv_item_skype_link_layout_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <profitsw2000.diffapps.customview.VerticalTextView
             android:id="@+id/open_skype_text_view"
             style="@style/verticalTextStyle"
-            class="profitsw2000.diffapps.customview.VerticalTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Open in"
+            android:text="@string/open_in_skype_text"
             app:layout_constraintBottom_toTopOf="@+id/camera_image_view"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -35,7 +33,7 @@
             android:id="@+id/camera_image_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="@dimen/camera_image_view_top_margin"
             android:rotation="90"
             android:src="@drawable/camera_icon"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -48,7 +46,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="24dp"
+        android:padding="@dimen/classes_rv_internal_layout_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -58,7 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/classes_image_background_style"
-            android:padding="16dp"
+            android:padding="@dimen/classes_rv_lesson_image_padding"
             android:src="@drawable/bow_and_arrow"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -72,8 +70,8 @@
             app:layout_constraintLeft_toRightOf="@+id/classes_recycler_view_item_image_view"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/lesson_time_image_view"
-            android:layout_marginLeft="24dp"
-            android:text="History"/>
+            android:layout_marginLeft="@dimen/classes_rv_item_lesson_name_text_left_margin"
+            tools:text="History"/>
 
         <ImageView
             android:id="@+id/lesson_time_image_view"
@@ -83,18 +81,18 @@
             app:layout_constraintTop_toBottomOf="@id/discipline_name_text_view"
             app:layout_constraintBottom_toBottomOf="parent"
             android:src="@drawable/clock_icon"
-            android:layout_marginLeft="24dp"/>
+            android:layout_marginLeft="@dimen/classes_rv_item_lesson_name_text_left_margin"/>
 
         <TextView
-            android:id="@+id/leson_time_text_view"
+            android:id="@+id/lesson_time_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/main_layouts_sub_title_style"
             app:layout_constraintLeft_toRightOf="@+id/lesson_time_image_view"
             app:layout_constraintTop_toBottomOf="@id/discipline_name_text_view"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginLeft="8dp"
-            android:text="8:00 - 8:45"/>
+            android:layout_marginLeft="@dimen/classes_rv_item_time_text_left_margin"
+            tools:text="8:00 - 8:45"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

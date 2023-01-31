@@ -34,8 +34,8 @@
         app:layout_constraintTop_toBottomOf="@id/count_down_timer_card_view"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp">
+        android:paddingLeft="@dimen/fragment_layout_standart_padding"
+        android:paddingRight="@dimen/fragment_layout_standart_padding">
 
         <TextView
             android:id="@+id/classes_recycler_view_title_text_view"

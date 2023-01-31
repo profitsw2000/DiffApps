@@ -36,14 +36,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/exam_count_down_timer_digit_text_style"
-            android:text="0"/>
+            tools:text="0"/>
 
         <TextView
             android:id="@+id/days_digit_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/exam_count_down_timer_digit_text_style"
-            android:text="9"/>
+            tools:text="9"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -58,14 +58,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/exam_count_down_timer_digit_text_style"
-            android:text="2"/>
+            tools:text="2"/>
 
         <TextView
             android:id="@+id/hours_digit_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/exam_count_down_timer_digit_text_style"
-            android:text="3"/>
+            tools:text="3"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -80,14 +80,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/exam_count_down_timer_digit_text_style"
-            android:text="5"/>
+            tools:text="5"/>
 
         <TextView
             android:id="@+id/minutes_digit_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/exam_count_down_timer_digit_text_style"
-            android:text="9"/>
+            tools:text="9"/>
 
     </LinearLayout>
 

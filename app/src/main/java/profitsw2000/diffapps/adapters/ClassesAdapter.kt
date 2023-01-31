@@ -38,22 +38,27 @@ class ClassesAdapter (
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(lesson: Lesson) {
             val lessonTime = "${lesson.startHour}.${getMinutesString(lesson.startMinute)} - ${lesson.endHour}.${getMinutesString(lesson.endMinute)}"
-            val resId = when(lesson.name) {
-                "History" -> R.drawable.bow_and_arrow
-                "Literature" -> R.drawable.literature_icon
-                "Physics" -> R.drawable.physics_icon
-                "English" -> R.drawable.english_icon
-                "Mathematics" -> R.drawable.math_icon
-                "Physical education" -> R.drawable.physical_education_icon
-                else -> R.drawable.bow_and_arrow
-            }
+            val resId = getImageResourceId(lesson)
             with(binding) {
                 disciplineNameTextView.text = lesson.name
-                lesonTimeTextView.text = lessonTime
+                lessonTimeTextView.text = lessonTime
                 classesRecyclerViewItemImageView.setImageResource(resId)
                 if (!lesson.isOnline) skypeLinkConstraintLayout.visibility = View.GONE
             }
         }
+    }
+
+    private fun getImageResourceId(lesson: Lesson): Int {
+        val resId = when (lesson.name) {
+            "History" -> R.drawable.bow_and_arrow
+            "Literature" -> R.drawable.literature_icon
+            "Physics" -> R.drawable.physics_icon
+            "English" -> R.drawable.english_icon
+            "Mathematics" -> R.drawable.math_icon
+            "Physical education" -> R.drawable.physical_education_icon
+            else -> R.drawable.bow_and_arrow
+        }
+        return resId
     }
 
     private fun getMinutesString(minute: Int) : String {

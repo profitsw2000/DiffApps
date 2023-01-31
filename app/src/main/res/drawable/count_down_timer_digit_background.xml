@@ -3,7 +3,7 @@
     <item>
         <shape>
             <solid android:color="@color/teal_600"/>
-            <corners android:radius="12dp"/>
+            <corners android:radius="@dimen/countdown_card_digit_corner_radius_size"/>
         </shape>
     </item>
 </selector>
