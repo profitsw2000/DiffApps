@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DiffApps</string>
+    <string name="likes_image_content_description_text">Likes</string>
+    <string name="comments_image_content_description_text">Comments</string>
 </resources>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reddit_posts_recycler_view_root_layout"
+    android:layout_width="match_parent"
+    android:paddingTop="@dimen/posts_rv_item_padding"
+    android:paddingLeft="@dimen/posts_rv_item_padding"
+    android:paddingRight="@dimen/posts_rv_item_padding"
+    android:background="@color/white_snow"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/post_title_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textStyle="bold"
+        tools:text="What do we think is gonna happen here? will people who share accounts get their own? or will this cause backlash? money loss or money gain for netflix? what do we think?"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_info_constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/post_title_text_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:paddingTop="@dimen/posts_rv_item_space_between_title_and_bottom_info_line">
+
+        <ImageView
+            android:id="@+id/likes_icon_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/star_icon_24"
+            android:contentDescription="@string/likes_image_content_description_text" />
+
+        <TextView
+            android:id="@+id/likes_number_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/posts_rv_item_icon_to_text_view_space"
+            app:layout_constraintLeft_toRightOf="@+id/likes_icon_image_view"
+            app:layout_constraintTop_toTopOf="@id/likes_icon_image_view"
+            app:layout_constraintBottom_toBottomOf="@id/likes_icon_image_view"
+            tools:text="13"/>
+
+        <ImageView
+            android:id="@+id/comments_icon_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/posts_rv_item_icon_to_text_view_space"
+            app:layout_constraintRight_toLeftOf="@+id/comments_number_text_view"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/comment_icon_24"
+            android:contentDescription="@string/comments_image_content_description_text" />
+
+        <TextView
+            android:id="@+id/comments_number_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/comments_icon_image_view"
+            app:layout_constraintBottom_toBottomOf="@id/comments_icon_image_view"
+            tools:text="135"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="18dp"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_info_constraint_layout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@color/platinum"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

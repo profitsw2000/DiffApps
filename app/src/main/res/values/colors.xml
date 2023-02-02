@@ -7,6 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="sun_rise">#FFefd247</color>
     <color name="cryola">#FF3e4fb8</color>
+    <color name="white_snow">#FFfafafa</color>
+    <color name="platinum">#FFeaeae8</color>
+    <color name="pearl_dark_grey">#FF828282</color>
+    <color name="green_michigan">#FF006837</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
