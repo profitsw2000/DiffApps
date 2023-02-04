@@ -1,12 +1,15 @@
 package profitsw2000.diffapps.data.web
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import profitsw2000.diffapps.domain.RepositoryWeb
 import profitsw2000.diffapps.mappers.RedditPostsMapper
+import profitsw2000.diffapps.model.AppState
 import profitsw2000.diffapps.model.Post
+import profitsw2000.diffapps.repository.PostDataSource
 import profitsw2000.diffapps.repository.RedditPostsDataSourceFactory
 import profitsw2000.diffapps.utils.PAGE_SIZE
 
@@ -26,5 +29,11 @@ class RepositoryWebImpl(private val redditApi: RedditApi) : RepositoryWeb {
         postPagedList = LivePagedListBuilder(redditPostsDataSourceFactory, config).build()
 
         return postPagedList
+    }
+
+    override fun getAppState(): LiveData<AppState> {
+        return Transformations.switchMap<PostDataSource, AppState>(
+            redditPostsDataSourceFactory.postLiveDataSource, PostDataSource::appState
+        )
     }
 }

@@ -1,5 +1,6 @@
 package profitsw2000.diffapps.repository
 
+import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import profitsw2000.diffapps.data.web.RedditApi
@@ -12,7 +13,11 @@ class RedditPostsDataSourceFactory(
     private val redditPostsMapper: RedditPostsMapper
 ) : DataSource.Factory<String, Post>() {
 
+    val postLiveDataSource = MutableLiveData<PostDataSource>()
+
     override fun create(): DataSource<String, Post> {
+        val postDataSource = PostDataSource(redditApi, compositeDisposable, redditPostsMapper)
+
         return PostDataSource(redditApi, compositeDisposable, redditPostsMapper)
     }
 }
