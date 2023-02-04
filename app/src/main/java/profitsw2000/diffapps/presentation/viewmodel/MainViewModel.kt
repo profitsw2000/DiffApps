@@ -22,8 +22,6 @@ class MainViewModel(
     }
     val postPagedList: LiveData<PagedList<Post>> by this::_postPagedList
 
-
-
     private val _appState: LiveData<AppState> by lazy {
         (repository as RepositoryWebImpl).getAppState()
     }

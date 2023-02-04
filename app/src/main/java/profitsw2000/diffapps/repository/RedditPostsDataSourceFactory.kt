@@ -18,6 +18,7 @@ class RedditPostsDataSourceFactory(
     override fun create(): DataSource<String, Post> {
         val postDataSource = PostDataSource(redditApi, compositeDisposable, redditPostsMapper)
 
-        return PostDataSource(redditApi, compositeDisposable, redditPostsMapper)
+        postLiveDataSource.postValue(postDataSource)
+        return postDataSource
     }
 }

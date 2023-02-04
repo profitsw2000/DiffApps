@@ -33,7 +33,7 @@ class PostDataSource(
                         appState.postValue(AppState.Loaded)
                     },
                     {
-                        AppState.Error(it.toString())
+                        appState.postValue(AppState.Error(it.toString()))
                     })
         )
     }
@@ -50,7 +50,7 @@ class PostDataSource(
                         appState.postValue(AppState.Loaded)
                     },
                     {
-                        AppState.Error(it.toString())
+                        appState.postValue(AppState.Error(it.toString()))
                     })
         )
     }

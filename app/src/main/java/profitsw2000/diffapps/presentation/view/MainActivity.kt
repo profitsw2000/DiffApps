@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
                     binding.errorTextView.visibility = View.GONE
                 }
                 is AppState.Error -> {
+                    binding.progressbar.visibility = View.GONE
                     binding.errorTextView.visibility = View.VISIBLE
                     binding.errorTextView.text = it.message
                 }
