@@ -31,7 +31,9 @@ class PostDataSource(
                     })
         )
     }
+
     override fun loadAfter(params: LoadParams<String>, callback: LoadCallback<String, Post>) {
+        Log.d("VVV", "key: ${params.key}")
         compositeDisposable.add(
             redditApi.getRedditPosts(params.key, PAGE_SIZE)
                 .subscribeOn(Schedulers.io())

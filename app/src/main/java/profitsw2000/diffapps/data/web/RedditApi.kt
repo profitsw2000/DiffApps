@@ -7,7 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface RedditApi {
-    @GET("/hot.json")
+    @GET("hot.json")
     fun getRedditPosts(
         @Query("after") after: String,
         @Query("limit") limit: Int

@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val appModule = module {
 
-    single<String>(named(URL)) { "https://www.reddit.com/r/aww" }
+    single<String>(named(URL)) { "https://www.reddit.com/r/aww/" }
     single<RedditApi> { get<Retrofit>().create(RedditApi::class.java) }
     single<Repository>(named(NAME_REMOTE)) { RepositoryWebImpl(get()) }
     single { Retrofit.Builder()
