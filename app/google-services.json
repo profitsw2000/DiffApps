@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "186814676489",
+    "project_id": "diffapps-778e4",
+    "storage_bucket": "diffapps-778e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186814676489:android:3911a82cb1be40397242d8",
+        "android_client_info": {
+          "package_name": "profitsw2000.diffapps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "186814676489-u864tbcj9m2ppt65iebr0h9sgt1ua4n4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFZ--obiCWMnngyE4kglMOBpA_IKowths"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "186814676489-u864tbcj9m2ppt65iebr0h9sgt1ua4n4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
