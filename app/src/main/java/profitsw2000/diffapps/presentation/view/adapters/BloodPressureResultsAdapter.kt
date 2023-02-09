@@ -58,7 +58,7 @@ class BloodPressureResultsAdapter : RecyclerView.Adapter<BloodPressureResultsAda
     }
 
     private fun setBackground(position: Int) {
-        when(position%4) {
+        when(position % 4) {
             0 -> binding.hourBloodPressureResultListItemViewRootLayout.setBackgroundResource(R.drawable.yellow_gradient_background)
             1 -> binding.hourBloodPressureResultListItemViewRootLayout.setBackgroundResource(R.drawable.green_gradient_background)
             2 -> binding.hourBloodPressureResultListItemViewRootLayout.setBackgroundResource(R.drawable.pink_gradient_background)
