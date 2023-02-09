@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/custom_background">
+    android:background="@drawable/yellow_gradient_background">
 
     <View
         android:layout_width="match_parent"
@@ -17,8 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="18dp"
-        android:paddingBottom="18dp"
-        android:background="@drawable/custom_background">
+        android:paddingBottom="18dp">
 
         <TextView
             android:id="@+id/measure_time_text_view"

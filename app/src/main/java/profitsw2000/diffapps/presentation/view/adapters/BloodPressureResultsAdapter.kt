@@ -1,13 +1,13 @@
 package profitsw2000.diffapps.presentation.view.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import profitsw2000.diffapps.databinding.DailyBloodPressureResultListItemViewBinding
+import profitsw2000.diffapps.R
 import profitsw2000.diffapps.databinding.HourBloodPressureResultListItemViewBinding
 import profitsw2000.diffapps.model.BloodPressure
-import profitsw2000.diffapps.model.DayBloodPressure
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -30,7 +30,7 @@ class BloodPressureResultsAdapter : RecyclerView.Adapter<BloodPressureResultsAda
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(data[position])
+        holder.bind(data[position], position)
     }
 
     override fun getItemCount(): Int {
@@ -42,7 +42,9 @@ class BloodPressureResultsAdapter : RecyclerView.Adapter<BloodPressureResultsAda
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(bloodPressure: BloodPressure) {
+        fun bind(bloodPressure: BloodPressure, position: Int) {
+
+            setBackground(position)
             val time = Date(bloodPressure.date)
             val sdf = SimpleDateFormat("HH:mm")
 
@@ -52,6 +54,15 @@ class BloodPressureResultsAdapter : RecyclerView.Adapter<BloodPressureResultsAda
                 lowPressureTextView.text = bloodPressure.lowPressure.toString()
                 pulseTextView.text = bloodPressure.pulse.toString()
             }
+        }
+    }
+
+    private fun setBackground(position: Int) {
+        when(position%4) {
+            0 -> binding.hourBloodPressureResultListItemViewRootLayout.setBackgroundResource(R.drawable.yellow_gradient_background)
+            1 -> binding.hourBloodPressureResultListItemViewRootLayout.setBackgroundResource(R.drawable.green_gradient_background)
+            2 -> binding.hourBloodPressureResultListItemViewRootLayout.setBackgroundResource(R.drawable.pink_gradient_background)
+            3 -> binding.hourBloodPressureResultListItemViewRootLayout.setBackgroundResource(R.drawable.blue_gradient_background)
         }
     }
 }

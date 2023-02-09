@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import profitsw2000.diffapps.R
 import profitsw2000.diffapps.databinding.DailyBloodPressureResultListItemViewBinding
 import profitsw2000.diffapps.model.DayBloodPressure
 import java.text.SimpleDateFormat
@@ -42,15 +43,15 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(dayBloodPressure: DayBloodPressure) {
 
-            val time = Date(dayBloodPressure.date)
-            val sdf = SimpleDateFormat("d MMM", Locale("RU"))
+            val date = Date(dayBloodPressure.date)
+            val sdf = SimpleDateFormat("d MMMM", Locale("RU"))
 
             val bloodPressureResultsAdapter = BloodPressureResultsAdapter()
             bloodPressureResultsAdapter.setData(dayBloodPressure.bloodPressureList)
             bloodPressureResultsAdapter.notifyDataSetChanged()
 
             with(binding) {
-                dateTextView.text = dayBloodPressure.date.toString()
+                dateTextView.text = sdf.format(date)
                 hourBloodPressureResultRecyclerView.adapter = bloodPressureResultsAdapter
             }
         }
