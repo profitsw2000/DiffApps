@@ -33,8 +33,6 @@ class MainActivity : AppCompatActivity() {
             showEditDialog()
         }
 
-        binding.bloodPressureResultRecyclerView.adapter = adapter
-
         val observer = Observer<List<DayBloodPressure>> {
             renderData(it)
         }
@@ -49,9 +47,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun renderData(dayBloodPressureList: List<DayBloodPressure>) {
-
+        binding.bloodPressureResultRecyclerView.adapter = adapter
         adapter.setData(dayBloodPressureList)
         adapter.notifyDataSetChanged()
+        binding.bloodPressureResultRecyclerView.scrollToPosition(dayBloodPressureList.size - 1)
     }
 
     private fun showEditDialog() {
