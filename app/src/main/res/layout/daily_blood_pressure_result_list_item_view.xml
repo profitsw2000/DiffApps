@@ -27,9 +27,7 @@
         android:id="@+id/hour_blood_pressure_result_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:orientation="vertical"
-        android:stackFromBottom="true"/>
+        android:orientation="vertical"/>
 
     <View
         android:layout_width="match_parent"

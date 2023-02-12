@@ -10,18 +10,9 @@ import profitsw2000.diffapps.model.BloodPressure
 import java.text.SimpleDateFormat
 import java.util.*
 
-class BloodPressureResultsAdapter : RecyclerView.Adapter<BloodPressureResultsAdapter.ViewHolder>() {
+class BloodPressureResultsAdapter(private val data: List<BloodPressure>) : RecyclerView.Adapter<BloodPressureResultsAdapter.ViewHolder>() {
 
-    private var data: List<BloodPressure> = arrayListOf()
     private lateinit var binding: HourBloodPressureResultListItemViewBinding
-
-    fun setData (data: List<BloodPressure>) {
-        this.data = data
-    }
-
-    fun getData() : List<BloodPressure> {
-        return data
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         binding = HourBloodPressureResultListItemViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -44,7 +35,7 @@ class BloodPressureResultsAdapter : RecyclerView.Adapter<BloodPressureResultsAda
         fun bind(bloodPressure: BloodPressure, position: Int) {
 
             setBackground(position)
-            val time = Date(bloodPressure.date)
+            val time = bloodPressure.date?.let { Date(it) }
             val sdf = SimpleDateFormat("HH:mm")
 
             with(binding) {
